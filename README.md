@@ -1,0 +1,2 @@
+# NTUST_COMPUTER_ORGANIZATION
+計算機組織-劉一宇

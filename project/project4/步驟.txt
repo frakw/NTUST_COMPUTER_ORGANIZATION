@@ -1,0 +1,15 @@
+步驟:
+A = 學號
+B = 學號平方的二進制
+C = B刪掉後16bit後 取後15bit 最前面+0 變16bit
+D = B刪掉後16bit後 取後15bit 最前面+1 變16bit
+product是32bit，一開始前16bit放0，後16bit放D
+重複做以下動作直到第16次結束:
+	執行前一次的指令
+		sub:product前16bit加上C取二補數，然後shift
+		add:product前16bit加上C，然後shift
+		shift:product向右位移1bit，最前面補sign extension(補目前的最高位元)
+	判斷product最低位元與前一最低位元的組合
+		00或11	下一指令為shift
+		01	下一指令為add(也包含shift)
+		10	下一指令為sub(也包含shift)
